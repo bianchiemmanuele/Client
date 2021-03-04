@@ -28,15 +28,12 @@ public class ClientBase {
             PrintWriter out = new PrintWriter(server.getOutputStream(), true);
             BufferedReader in = new BufferedReader( new InputStreamReader(server.getInputStream()));
             Scanner tastiera = new Scanner(System.in);
-            String s = "";
-            while (!s.equals("exit")) {
-                System.out.println("Inserire frase da inviare al server:");
-                s = tastiera.nextLine();
-                System.out.println("frase inserita: " + s);
+            Integer s = 0;
+            while (s == 0) {
+                System.out.println("Inserire il numero da inviare al server:");
+                s = tastiera.nextInt();
+                System.out.println("numero inserito: "+ s);
                 out.println(s);
-                String risposta = in.readLine();
-                System.out.println("risposta del server: "+ risposta);
-                System.out.println("Hai inserito: "+  risposta.split( " ")[1]);
             }
 
             in.close();
